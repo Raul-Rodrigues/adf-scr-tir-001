@@ -1,0 +1,370 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-p1-prod-eus"
+		},
+		"cn_dls_bra_p1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'cn_dls_bra_p1'"
+		},
+		"cn_dls_p1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'cn_dls_p1'"
+		},
+		"cn_dynamics_brrepl_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'cn_dynamics_brrepl'"
+		},
+		"cn_synapse_ca_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'cn_synapse_ca'"
+		},
+		"cn_dls_bra_p1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stp1prodbra.dfs.core.windows.net"
+		},
+		"cn_dls_p1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stp1prodeus.dfs.core.windows.net"
+		},
+		"cn_dynamics_brrepl_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "karen.bello@sonda.com"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pip_pause_synapse_pools')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Job for resuming automatically paused SQL Pools",
+				"activities": [
+					{
+						"name": "Pause Synapse Pools",
+						"description": "Web-API call for pausing automatically paused SQL Pools",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": {
+								"value": "https://management.azure.com/subscriptions/4979b9e3-d7f3-4793-80ad-7bc9cc03088a/resourceGroups/rg-datalake-prod-eus/providers/Microsoft.Synapse/workspaces/az-syn-eus-ws-001/sqlPools/@{pipeline().parameters.sql_pool}/pause?api-version=2019-06-01-preview",
+								"type": "Expression"
+							},
+							"method": "POST",
+							"headers": {},
+							"body": "<body></body>",
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.core.windows.net"
+							}
+						}
+					}
+				],
+				"parameters": {
+					"sql_pool": {
+						"type": "string",
+						"defaultValue": "sqldw_prd"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-03-22T11:11:03Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pip_resume_synapse_pools')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Job for resuming automatically paused SQL Pools",
+				"activities": [
+					{
+						"name": "Start Synapse Pools",
+						"description": "Web-API call for resuming automatically paused SQL Pools",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": {
+								"value": "https://management.azure.com/subscriptions/4979b9e3-d7f3-4793-80ad-7bc9cc03088a/resourceGroups/rg-datalake-prod-eus/providers/Microsoft.Synapse/workspaces/az-syn-eus-ws-001/sqlPools/@{pipeline().parameters.sql_pool}/resume?api-version=2019-06-01-preview",
+								"type": "Expression"
+							},
+							"method": "POST",
+							"headers": {},
+							"body": "<body></body>",
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.core.windows.net"
+							}
+						}
+					}
+				],
+				"parameters": {
+					"sql_pool": {
+						"type": "string",
+						"defaultValue": "sqldw_prd"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-03-22T11:11:40Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cn_dls_bra_p1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('cn_dls_bra_p1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('cn_dls_bra_p1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cn_dls_p1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('cn_dls_p1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('cn_dls_p1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cn_dynamics_brrepl')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://sondamigracion.crm2.dynamics.com/",
+					"authenticationType": "Office365",
+					"username": "[parameters('cn_dynamics_brrepl_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('cn_dynamics_brrepl_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cn_synapse_ca')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "CA-SDM PROD instance data model",
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('cn_synapse_ca_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/caprodtoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/caqatozure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cipprodtoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ebcprodtoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700argentinatoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700chiletoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700colombiatoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700costaricatoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "fin700costaricatoazure",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700ecuadortoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700mexicotoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700perutoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fin700uruguaytoazure')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DynamicsEntity1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_dynamics_brrepl",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DynamicsEntity",
+				"schema": [],
+				"typeProperties": {
+					"entityName": "opportunity"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/cn_dynamics_brrepl')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_dls_p1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "acr-p1-crm-02/Staging/Fact_Opportunity",
+						"fileSystem": "acr-p1-prod-eus-003"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/cn_dls_p1')]"
+			]
+		}
+	]
+}

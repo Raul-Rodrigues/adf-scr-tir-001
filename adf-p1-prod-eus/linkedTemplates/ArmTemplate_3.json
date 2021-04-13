@@ -1,0 +1,3596 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-p1-prod-eus"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_category')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "prob_ctg"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_company')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_company"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_contact')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_contact"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_contact_type')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_contact_type"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_country')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_country"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_crt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "crt"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_impact')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "impact"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_location')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_location"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_organization')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_organization"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_owned_resource')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_owned_resource"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_resolution_code')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "usp_resolution_code"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_resource_department')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_resource_department"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_status')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "cr_stat"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_ca_tenant')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ca_tenant"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_pri')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "pri"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_repmeth')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "repmeth"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_survey')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "survey"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_tskstat')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tskstat"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_tskty')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tskty"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_tz')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tz"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
