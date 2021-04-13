@@ -1,0 +1,6 @@
+{
+	"name": "cipprodtoazure",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

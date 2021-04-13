@@ -1,0 +1,6 @@
+{
+	"name": "caprodtoazure",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

@@ -1,0 +1,911 @@
+{
+	"name": "pip_careplica_trx",
+	"properties": {
+		"description": "Capture TRANSACTIONAL data from CA-SDM",
+		"activities": [
+			{
+				"name": "ca_tickets",
+				"description": "table origin = call_req",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/ext_ca_call_req_2019.txt"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "select\nid,ref_num,parent,persid,active_flag,type,status,category,resolution_code,open_date,close_date,resolve_date,last_mod_dt,tenant,orig_user_organization,\ngroup_id,assignee,log_agent,customer,priority,impact,urgency,replace(replace(replace(major_incident,char(10),''),char(13),''),char(34),'') as major_incident,sla_violation,\npredicted_sla_viol,macro_predict_viol,replace(replace(replace(problem,char(10),''),char(13),''),char(34),'') as problem,time_spent_sum,zcontrato,zservicio,ztdavencido,ztdsvencido,ztda_id,\nztds_id,zreporting_met,zreportetipo,zencuesta,zempresabenef,zempresaparam,created_via,rootcause,affected_rc\nfrom call_req\nWHERE \nlast_mod_dt > @{pipeline().parameters.targetDaily}",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"name": "ref_num",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"name": "parent",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"name": "persid",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"name": "active_flag",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"name": "type",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"name": "status",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"name": "category",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"name": "resolution_code",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"name": "open_date",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"name": "close_date",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"name": "resolve_date",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"name": "last_mod_dt",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"name": "tenant",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"name": "orig_user_organization",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"name": "group_id",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"name": "assignee",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 17
+								}
+							},
+							{
+								"source": {
+									"name": "log_agent",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 18
+								}
+							},
+							{
+								"source": {
+									"name": "customer",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 19
+								}
+							},
+							{
+								"source": {
+									"name": "priority",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 20
+								}
+							},
+							{
+								"source": {
+									"name": "impact",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 21
+								}
+							},
+							{
+								"source": {
+									"name": "urgency",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 22
+								}
+							},
+							{
+								"source": {
+									"name": "major_incident",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 23
+								}
+							},
+							{
+								"source": {
+									"name": "sla_violation",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 24
+								}
+							},
+							{
+								"source": {
+									"name": "predicted_sla_viol",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 25
+								}
+							},
+							{
+								"source": {
+									"name": "macro_predict_viol",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 26
+								}
+							},
+							{
+								"source": {
+									"name": "problem",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 27
+								}
+							},
+							{
+								"source": {
+									"name": "time_spent_sum",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 28
+								}
+							},
+							{
+								"source": {
+									"name": "zcontrato",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 29
+								}
+							},
+							{
+								"source": {
+									"name": "zservicio",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 30
+								}
+							},
+							{
+								"source": {
+									"name": "ztdavencido",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 31
+								}
+							},
+							{
+								"source": {
+									"name": "ztdsvencido",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 32
+								}
+							},
+							{
+								"source": {
+									"name": "ztda_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 33
+								}
+							},
+							{
+								"source": {
+									"name": "ztds_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 34
+								}
+							},
+							{
+								"source": {
+									"name": "zreporting_met",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 35
+								}
+							},
+							{
+								"source": {
+									"name": "zreportetipo",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 36
+								}
+							},
+							{
+								"source": {
+									"name": "zencuesta",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 37
+								}
+							},
+							{
+								"source": {
+									"name": "zempresabenef",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 38
+								}
+							},
+							{
+								"source": {
+									"name": "zempresaparam",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 39
+								}
+							},
+							{
+								"source": {
+									"name": "created_via",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 40
+								}
+							},
+							{
+								"source": {
+									"name": "rootcause",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 41
+								}
+							},
+							{
+								"source": {
+									"name": "affected_rc",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 42
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ext_ca_call_req",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dt_ca_call_req",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ca_ticket_logs",
+				"description": "table act_log",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/ext_ca_act_log.txt"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "SELECT \n\n  logg.id as ticket_log_id_ref,\n  tick.ref_num as ticket_number,\n  tick.open_date as ticket_open_date,\n  logg.time_stamp as ticket_log_time_stamp,\n  logg.system_time as ticket_log_system_time,\n  logg.last_mod_dt as ticket_log_last_modified,\n  logg.analyst     as ticket_log_analyst,\n  logg.type        as ticket_log_type,\n  logg.internal    as ticket_log_internal,\n  logg.time_spent  as ticket_log_time_spent\n\n  FROM act_log logg\n  INNER JOIN call_req tick ON (logg.call_req_id = tick.persid)\n\nWHERE \ntick.last_mod_dt > @{pipeline().parameters.targetDaily}",
+							"type": "Expression"
+						},
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ticket_log_id_ref",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_number",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_open_date",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_time_stamp",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_system_time",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_last_modified",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_analyst",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_type",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_internal",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_log_time_spent",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 10
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ext_ca_act_log",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dt_ca_act_log",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "ca_surveys",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "."
+					},
+					{
+						"name": "Destination",
+						"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/ext_ca_survey.txt"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "SELECT \n    sur.id,\n    sur.object_type,\n    sur.[object_id],\n    sur.last_mod_dt as last_mod_dt_survey,\n    sur.last_mod_by as last_mod_by_survey,\n    suq.id as question_id, \n    REPLACE(REPLACE(REPLACE(suq.txt,char(10),''),char(13),''),char(34),'') as question,\n    suq.sequence as question_order,\n    suq.[response] survey_response_value,\n    REPLACE(REPLACE(REPLACE(CONVERT(nvarchar(max),suq.qcomment),char(10),''),char(13),''),char(34),'') as qcomment,\n    REPLACE(REPLACE(REPLACE(sua.txt,char(10),''),char(13),''),char(34),'') as survey_response, \n    sua.[sequence] as sequence_answer,\n    sua.last_mod_dt as last_mod_dt_answer,\n    sua.last_mod_by as last_mod_by_answer,\n    sur.tenant, \n    suq.mult_resp_flag,\n    suq.resp_required,\n    suq.include_qcomment\n\nFROM survey sur\n\n    LEFT OUTER JOIN survey_question suq ON (sur.id=suq.owning_survey)\n    LEFT OUTER JOIN survey_answer   sua ON (suq.id=sua.own_srvy_question AND sua.selected=1)\n\nWHERE sur.last_mod_dt > @{pipeline().parameters.targetDaily}",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"name": "object_type",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"name": "object_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"name": "last_mod_dt_survey",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"name": "last_mod_by_survey",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"name": "question_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"name": "question",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"name": "question_order",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"name": "survey_response_value",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"name": "qcomment",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"name": "survey_response",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"name": "sequence_answer",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"name": "last_mod_dt_answer",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"name": "last_mod_by_answer",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"name": "tenant",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"name": "mult_resp_flag",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"name": "resp_required",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 17
+								}
+							},
+							{
+								"source": {
+									"name": "include_qcomment",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 18
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ext_survey",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dt_survey",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"targetHistorical": {
+				"type": "string",
+				"defaultValue": "datediff(s, '1970-01-01', '2020-01-01')"
+			},
+			"targetDaily": {
+				"type": "string",
+				"defaultValue": "datediff(ss,'1970-01-01',format(getdate()-7,'yyyy-MM-dd'))"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-01-19T13:37:34Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

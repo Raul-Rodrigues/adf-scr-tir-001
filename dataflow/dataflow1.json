@@ -1,0 +1,32 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tdet_key as string,\n\t\tdet_language_code as string,\n\t\tdet_id as string,\n\t\tdet_opportunity_key as string,\n\t\tdet_product_key as string,\n\t\tdet_sequence as integer,\n\t\tdet_principal as boolean,\n\t\tdet_category as string,\n\t\tdet_businessline as string,\n\t\tdet_product_id_name as string,\n\t\tdet_product_name as string,\n\t\tdet_product_brand as string,\n\t\tdet_modalidad as string,\n\t\tdet_delivery_bu as string,\n\t\tdet_presales_bu as string,\n\t\tdet_skipcalc as integer,\n\t\tdet_trxcurrency as string,\n\t\tdet_exchange_rate as decimal(38,18),\n\t\tdet_exchange_rate_decimal as decimal(38,18),\n\t\tdet_quantity as decimal(38,18),\n\t\tdet_price_unit as decimal(38,18),\n\t\tdet_price_unit_base as decimal(38,18),\n\t\tdet_price_unit_decimal as decimal(38,18),\n\t\tdet_recalc as decimal(38,18),\n\t\tdet_recalc_base as decimal(38,18),\n\t\tdet_base_amount as decimal(38,18),\n\t\tdet_base_amount_base as decimal(38,18),\n\t\tdet_base_amount_decimal as decimal(38,18),\n\t\tdet_base_amount_div as decimal(38,18),\n\t\tdet_base_amount_div_base as decimal(38,18),\n\t\tdet_total_integration as decimal(38,18),\n\t\tdet_total_integration_base as decimal(38,18),\n\t\tdet_total_integration_decimal as decimal(38,18),\n\t\tdet_margin as decimal(38,18),\n\t\tdet_margin_base as decimal(38,18),\n\t\tdet_margin_decimal as decimal(38,18),\n\t\tdet_total_cost as decimal(38,18),\n\t\tdet_total_cost_base as decimal(38,18),\n\t\tdet_total_cost_decimal as decimal(38,18),\n\t\tdet_quota_quantity as integer,\n\t\tdet_quota_amount as decimal(38,18),\n\t\tdet_quota_amount_base as decimal(38,18),\n\t\tdet_quota_amount_decimal as decimal(38,18),\n\t\tdet_unit_amount as decimal(38,18),\n\t\tdet_unit_amount_base as decimal(38,18),\n\t\tdet_unit_amount_decimal as decimal(38,18),\n\t\tdet_createdon as timestamp,\n\t\tdet_modifiedon as timestamp,\n\t\tdet_owner_user_id as string,\n\t\tdet_owner_user_key as integer,\n\t\tdet_presales_user_id as string,\n\t\tdet_presales_user_key as integer,\n\t\tdet_delivery_user_id as string,\n\t\tdet_delivery_user_key as integer,\n\t\thea_createdon_date as timestamp,\n\t\thea_modifiedon_date as timestamp,\n\t\thea_estimated_close_date as timestamp,\n\t\thea_actual_close_date as timestamp,\n\t\thea_close_date as timestamp,\n\t\thea_sales_stage_change_date as timestamp,\n\t\thea_billing_start_date as timestamp,\n\t\thea_proposal_sent_date as timestamp,\n\t\thea_operation_start_date as timestamp,\n\t\thea_statecode as integer,\n\t\thea_statecode_name as string,\n\t\thea_statuscode as integer,\n\t\thea_statuscode_name as string,\n\t\thea_account_name as string,\n\t\thea_account_key as string,\n\t\thea_sales_stage_code_name as string,\n\t\thea_sales_stage_name as string,\n\t\thea_phase_name as string,\n\t\thea_nature_name as string,\n\t\thea_country as string,\n\t\thea_businessline as string,\n\t\thea_complexity as integer,\n\t\thea_bu_name as string,\n\t\thea_bu_divisionname as string,\n\t\thea_gross_margin as decimal(38,18),\n\t\thea_net_margin as decimal(38,18),\n\t\thea_purchase_order as string,\n\t\thea_qualification_endcycle as boolean,\n\t\thea_winner_name as string,\n\t\thea_resolution_code as string,\n\t\thea_regional_opp as boolean,\n\t\thea_commited_to_FC as boolean,\n\t\thea_close_probability as integer,\n\t\thea_createdby_name as string,\n\t\topr_producttypecode_name as string,\n\t\tdet_createdby as string,\n\t\tdet_createdonbehalfby as string,\n\t\tdet_modifiedby as string,\n\t\tdet_modifiedonbehalfby as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 100,\n\trowUrlColumn: 'FileName',\n\tformat: 'parquet') ~> source1\nsource1 derive(month = split(toString(det_createdon),'-')[2],\n\t\tyear = toInteger(split(toString(det_createdon),'-')[1])+1) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tpartitionBy('key',\n\t\t0,\n\t\tyear,\n\t\tmonth\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

@@ -1,0 +1,178 @@
+{
+	"name": "mdopportunity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cn_dls_bra_p1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "crm"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "opportunity-EntityMetadata.json",
+				"folderPath": "Microsoft.Athena.TrickleFeedService",
+				"fileSystem": "commondataservice-sondamigraci-org187dcebc"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"StateMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"EntityName": {
+								"type": "string"
+							},
+							"State": {
+								"type": "integer"
+							},
+							"IsUserLocalizedLabel": {
+								"type": "boolean"
+							},
+							"LocalizedLabelLanguageCode": {
+								"type": "integer"
+							},
+							"LocalizedLabel": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"StatusMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"EntityName": {
+								"type": "string"
+							},
+							"State": {
+								"type": "integer"
+							},
+							"Status": {
+								"type": "integer"
+							},
+							"IsUserLocalizedLabel": {
+								"type": "boolean"
+							},
+							"LocalizedLabelLanguageCode": {
+								"type": "integer"
+							},
+							"LocalizedLabel": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"GlobalOptionSetMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"OptionSetName": {
+								"type": "string"
+							},
+							"Option": {
+								"type": "integer"
+							},
+							"IsUserLocalizedLabel": {
+								"type": "boolean"
+							},
+							"LocalizedLabelLanguageCode": {
+								"type": "integer"
+							},
+							"LocalizedLabel": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"OptionSetMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"EntityName": {
+								"type": "string"
+							},
+							"OptionSetName": {
+								"type": "string"
+							},
+							"Option": {
+								"type": "integer"
+							},
+							"IsUserLocalizedLabel": {
+								"type": "boolean"
+							},
+							"LocalizedLabelLanguageCode": {
+								"type": "integer"
+							},
+							"LocalizedLabel": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"TargetMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"EntityName": {
+								"type": "string"
+							},
+							"AttributeName": {
+								"type": "string"
+							},
+							"ReferencedEntity": {
+								"type": "string"
+							},
+							"ReferencedAttribute": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"AttributeMetadata": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"EntityName": {
+								"type": "string"
+							},
+							"AttributeName": {
+								"type": "string"
+							},
+							"AttributeType": {
+								"type": "string"
+							},
+							"AttributeTypeCode": {
+								"type": "integer"
+							},
+							"Version": {
+								"type": "integer"
+							},
+							"Timestamp": {
+								"type": "string"
+							},
+							"MetadataId": {
+								"type": "string"
+							},
+							"Precision": {
+								"type": "integer"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsEntity1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cn_dynamics_brrepl",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": "opportunity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

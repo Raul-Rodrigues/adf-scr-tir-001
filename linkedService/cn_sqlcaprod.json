@@ -1,0 +1,16 @@
+{
+	"name": "cn_sqlcaprod",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=10.170.166.36;initial catalog=mdb;user id=Admcl.DashboardGIIC",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5MGVhNWU1NS02NTRhLTRjNGMtYjc1NC1lYWUwYzdhNWU5NDMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "caprodtoazure",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

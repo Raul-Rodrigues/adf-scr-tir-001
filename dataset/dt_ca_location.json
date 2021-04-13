@@ -1,0 +1,31 @@
+{
+	"name": "dt_ca_location",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cn_dls_p1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ca-sdm"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ext_ca_location.txt",
+				"folderPath": "acr-p1-ca-sdm",
+				"fileSystem": "acr-p1-prod-eus-001"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

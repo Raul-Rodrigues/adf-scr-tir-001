@@ -1,0 +1,42 @@
+{
+	"name": "pip_pause_synapse_pools",
+	"properties": {
+		"description": "Job for resuming automatically paused SQL Pools",
+		"activities": [
+			{
+				"name": "Pause Synapse Pools",
+				"description": "Web-API call for pausing automatically paused SQL Pools",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "https://management.azure.com/subscriptions/4979b9e3-d7f3-4793-80ad-7bc9cc03088a/resourceGroups/rg-datalake-prod-eus/providers/Microsoft.Synapse/workspaces/az-syn-eus-ws-001/sqlPools/@{pipeline().parameters.sql_pool}/pause?api-version=2019-06-01-preview",
+						"type": "Expression"
+					},
+					"method": "POST",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.core.windows.net"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"sql_pool": {
+				"type": "string",
+				"defaultValue": "sqldw_prd"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-03-22T11:11:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "trg_daily_ca",
+	"properties": {
+		"description": "Daily execution job to capture CA-SDM data",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pip_careplica_prd",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-01-14T00:15:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

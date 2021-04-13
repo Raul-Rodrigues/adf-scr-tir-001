@@ -1,0 +1,188 @@
+{
+	"name": "pip_careplica_prd",
+	"properties": {
+		"activities": [
+			{
+				"name": "Check Last Export Event",
+				"description": "Step to validate the last time that files have been exported to data lake storage.",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "chk_trx_metadata",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"lastModified",
+						"size"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Last Run Date x Today",
+				"description": "Just going to execute Data Loads in case the jobs aren't processed yet on the current date.",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Last Exported Date",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(formatDateTime(variables('lastRun'),'yyyy-MM-dd'),formatDateTime(utcnow(),'yyyy-MM-dd'))",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Auxiliar Data",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pip_careplica_aux",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Transactional Data",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Auxiliar Data",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pip_careplica_trx",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Load Staging Tables",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Transactional Data",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[casdm].[pr_load_staging]",
+								"storedProcedureParameters": {
+									"load_type": {
+										"value": "1",
+										"type": "Int16"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "cn_synapse_ca",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Load Data Model",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Load Staging Tables",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[casdm].[pr_load_datamodel]",
+								"storedProcedureParameters": {
+									"load_type": {
+										"value": "1",
+										"type": "Int16"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "cn_synapse_ca",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Last Exported Date",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Check Last Export Event",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "lastRun",
+					"value": {
+						"value": "@activity('Check Last Export Event').output.lastModified",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"lastRun": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-01-13T20:14:34Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,6 @@
+{
+	"name": "ebcprodtoazure",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

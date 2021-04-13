@@ -1,0 +1,7 @@
+{
+	"name": "fin700costaricatoazure",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "fin700costaricatoazure"
+	}
+}

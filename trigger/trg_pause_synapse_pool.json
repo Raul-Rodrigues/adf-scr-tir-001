@@ -1,0 +1,27 @@
+{
+	"name": "trg_pause_synapse_pool",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pip_pause_synapse_pools",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sql_pool": "sqldw_casdm_prd"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-01-14T22:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
