@@ -1,6 +1,7 @@
 {
-	"name": "ds_tbl_tickets",
+	"name": "dt_ca_tbl_ticket",
 	"properties": {
+		"description": "call_req",
 		"linkedServiceName": {
 			"referenceName": "cn_sqlcaprod",
 			"type": "LinkedServiceReference"
