@@ -5401,6 +5401,503 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pipeline4')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ca_tickets",
+						"description": "table origin = call_req",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "."
+							},
+							{
+								"name": "Destination",
+								"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/ext_ca_call_req_2019.txt"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"sqlReaderQuery": {
+									"value": "select\nid,ref_num,parent,persid,active_flag,type,status,category,resolution_code,open_date,close_date,resolve_date,last_mod_dt,tenant,orig_user_organization,\ngroup_id,assignee,log_agent,customer,priority,impact,urgency,replace(replace(replace(major_incident,char(10),''),char(13),''),char(34),'') as major_incident,sla_violation,\npredicted_sla_viol,macro_predict_viol,replace(replace(replace(problem,char(10),''),char(13),''),char(34),'') as problem,time_spent_sum,zcontrato,zservicio,ztdavencido,ztdsvencido,ztda_id,\nztds_id,zreporting_met,zreportetipo,zencuesta,zempresabenef,zempresaparam,created_via,rootcause,affected_rc\nfrom call_req\nWHERE \nlast_mod_dt >= datediff(s, '1970-01-01', '2020-01-01')",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "id",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"name": "ref_num",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"name": "parent",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"name": "persid",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"name": "active_flag",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"name": "type",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"name": "status",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"name": "category",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"name": "resolution_code",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"name": "open_date",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"name": "close_date",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"name": "resolve_date",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"name": "last_mod_dt",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"name": "tenant",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"name": "orig_user_organization",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"name": "group_id",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"name": "assignee",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"name": "log_agent",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"name": "customer",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"name": "priority",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"name": "impact",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"name": "urgency",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"name": "major_incident",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"name": "sla_violation",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"name": "predicted_sla_viol",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"name": "macro_predict_viol",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"name": "problem",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"name": "time_spent_sum",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"name": "zcontrato",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"name": "zservicio",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"name": "ztdavencido",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"name": "ztdsvencido",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"name": "ztda_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"name": "ztds_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"name": "zreporting_met",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"name": "zreportetipo",
+											"type": "String"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"name": "zencuesta",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"name": "zempresabenef",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"name": "zempresaparam",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"name": "created_via",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"name": "rootcause",
+											"type": "Int32"
+										},
+										"sink": {
+											"type": "Int32",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"name": "affected_rc",
+											"type": "Byte[]"
+										},
+										"sink": {
+											"type": "Byte[]",
+											"ordinal": 42
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ext_ca_call_req",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "dt_ca_call_req",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pip_careplica_prd')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -5603,7 +6100,7 @@
 			"properties": {
 				"description": "Daily execution job to capture CA-SDM data",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
