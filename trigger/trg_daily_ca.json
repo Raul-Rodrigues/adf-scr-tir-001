@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Daily execution job to capture CA-SDM data",
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
