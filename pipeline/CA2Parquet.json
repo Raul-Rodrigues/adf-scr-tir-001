@@ -26,13 +26,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT TOP 10 \n\topen_date,\n\tformat(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101')),'yyyy-MM-dd') as ticket_open_date,\n\tref_num \nFROM [dbo].[call_req]\nWHERE ?AdfDynamicRangePartitionCondition",
+						"sqlReaderQuery": "SELECT TOP 10 \n\topen_date,\n\tformat(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101')),'yyyy-MM-dd') as ticket_open_date,\n        year(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as year_open_date,\n        month(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as month_open_date,\n        day(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as day_open_date,\n\tref_num \nFROM [dbo].[call_req]\nWHERE ?AdfDynamicRangePartitionCondition",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "DynamicRange",
 						"partitionSettings": {
-							"partitionColumnName": "ticket_open_date",
-							"partitionUpperBound": "2021-01-01",
-							"partitionLowerBound": "2020-01-01"
+							"partitionColumnName": "year_open_date",
+							"partitionUpperBound": "2022",
+							"partitionLowerBound": "2020"
 						}
 					},
 					"sink": {
@@ -45,8 +45,47 @@
 						}
 					},
 					"enableStaging": false,
+					"parallelCopies": 10,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "open_date",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "open_date",
+									"type": "Int32",
+									"physicalType": "INT_32"
+								}
+							},
+							{
+								"source": {
+									"name": "ticket_open_date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ticket_open_date",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ref_num",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ref_num",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
