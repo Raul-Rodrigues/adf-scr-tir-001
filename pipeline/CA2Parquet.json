@@ -45,7 +45,7 @@
 						}
 					},
 					"enableStaging": false,
-					"parallelCopies": 10,
+					"parallelCopies": 5,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
@@ -71,6 +71,42 @@
 									"name": "ticket_open_date",
 									"type": "String",
 									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "year_open_date",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "year_open_date",
+									"type": "Int32",
+									"physicalType": "INT_32"
+								}
+							},
+							{
+								"source": {
+									"name": "month_open_date",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "month_open_date",
+									"type": "Int32",
+									"physicalType": "INT_32"
+								}
+							},
+							{
+								"source": {
+									"name": "day_open_date",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "day_open_date",
+									"type": "Int32",
+									"physicalType": "INT_32"
 								}
 							},
 							{
