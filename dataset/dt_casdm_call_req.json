@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "acr-p1-ca-sdm/call_req",
+				"fileName": "teste.parquet",
+				"folderPath": "acr-p1-ca-sdm/",
 				"fileSystem": "acr-p1-prod-eus-001"
 			},
 			"compressionCodec": "snappy"

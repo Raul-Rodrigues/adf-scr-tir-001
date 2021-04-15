@@ -30,9 +30,9 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "DynamicRange",
 						"partitionSettings": {
-							"partitionColumnName": "year_open_date",
-							"partitionUpperBound": "2022",
-							"partitionLowerBound": "2020"
+							"partitionColumnName": "ref_num",
+							"partitionUpperBound": "10000483",
+							"partitionLowerBound": "5737554"
 						}
 					},
 					"sink": {
