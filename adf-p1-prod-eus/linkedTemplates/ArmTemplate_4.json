@@ -1727,7 +1727,7 @@
 							"source": {
 								"type": "SqlServerSource",
 								"sqlReaderQuery": {
-									"value": "select\nid,ref_num,parent,persid,active_flag,type,status,category,resolution_code,open_date,close_date,resolve_date,last_mod_dt,tenant,orig_user_organization,\ngroup_id,assignee,log_agent,customer,priority,impact,urgency,replace(replace(replace(major_incident,char(10),''),char(13),''),char(34),'') as major_incident,sla_violation,\npredicted_sla_viol,macro_predict_viol,replace(replace(replace(problem,char(10),''),char(13),''),char(34),'') as problem,time_spent_sum,zcontrato,zservicio,ztdavencido,ztdsvencido,ztda_id,\nztds_id,zreporting_met,zreportetipo,zencuesta,zempresabenef,zempresaparam,created_via,rootcause,affected_rc\n,orig_user_admin_org\n,zorgadmbenef\n,zorgfunbenef\n,year(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as year_open_date\n,month(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as month_open_date\n,replace(replace(replace(convert(nvarchar(max), [description]),char(10),''),char(13),''),char(34),'') as [description]\n,replace(replace(replace(convert(nvarchar(max), summary),char(10),''),char(13),''),char(34),'') as summary\nfrom call_req\nWHERE \nlast_mod_dt > @{pipeline().parameters.targetDaily}",
+									"value": "select\nid,ref_num,parent,persid,active_flag,type,status,category,resolution_code,open_date,close_date,resolve_date,last_mod_dt,tenant,orig_user_organization,\ngroup_id,assignee,log_agent,customer,priority,impact,urgency,replace(replace(replace(major_incident,char(10),''),char(13),''),char(34),'') as major_incident,sla_violation,\npredicted_sla_viol,macro_predict_viol,replace(replace(replace(problem,char(10),''),char(13),''),char(34),'') as problem,time_spent_sum,zcontrato,zservicio,ztdavencido,ztdsvencido,ztda_id,\nztds_id,zreporting_met,zreportetipo,zencuesta,zempresabenef,zempresaparam,created_via,rootcause,affected_rc\n,orig_user_admin_org\n,zorgadmbenef\n,zorgfunbenef\n,year(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as year_open_date\n,month(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as month_open_date\n,replace(replace(replace(replace(convert(nvarchar(max), [description]),char(10),''),char(13),''),char(34),''),char(124),'') as [description]\n,replace(replace(replace(replace(convert(nvarchar(max), summary),char(10),''),char(13),''),char(34),''),char(124),'') as summary\nfrom call_req\nWHERE \nlast_mod_dt > @{pipeline().parameters.targetDaily}",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -2172,8 +2172,7 @@
 									},
 									{
 										"source": {
-											"name": "orig_user_admin_org",
-											"type": "Byte[]"
+											"name": "orig_user_admin_org"
 										},
 										"sink": {
 											"name": "orig_user_admin_org",
@@ -2182,8 +2181,7 @@
 									},
 									{
 										"source": {
-											"name": "zorgadmbenef",
-											"type": "Byte[]"
+											"name": "zorgadmbenef"
 										},
 										"sink": {
 											"name": "zorgadmbenef",
@@ -2192,8 +2190,7 @@
 									},
 									{
 										"source": {
-											"name": "zorgfunbenef",
-											"type": "Byte[]"
+											"name": "zorgfunbenef"
 										},
 										"sink": {
 											"name": "zorgfunbenef",
@@ -2202,8 +2199,7 @@
 									},
 									{
 										"source": {
-											"name": "year_open_date",
-											"type": "Int32"
+											"name": "year_open_date"
 										},
 										"sink": {
 											"name": "year_open_date",
@@ -2212,8 +2208,7 @@
 									},
 									{
 										"source": {
-											"name": "month_open_date",
-											"type": "Int32"
+											"name": "month_open_date"
 										},
 										"sink": {
 											"name": "month_open_date",
@@ -2222,8 +2217,7 @@
 									},
 									{
 										"source": {
-											"name": "description",
-											"type": "String"
+											"name": "description"
 										},
 										"sink": {
 											"name": "description",
@@ -2232,8 +2226,7 @@
 									},
 									{
 										"source": {
-											"name": "summary",
-											"type": "String"
+											"name": "summary"
 										},
 										"sink": {
 											"name": "summary",

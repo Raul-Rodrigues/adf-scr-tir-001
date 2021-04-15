@@ -608,6 +608,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "ext_casdm_call_req.txt",
 						"folderPath": "acr-p1-ca-sdm/call_req",
 						"fileSystem": "acr-p1-prod-eus-001"
 					},
