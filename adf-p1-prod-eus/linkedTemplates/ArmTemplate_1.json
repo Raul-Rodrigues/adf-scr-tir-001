@@ -612,8 +612,6 @@
 						"fileSystem": "acr-p1-prod-eus-001"
 					},
 					"columnDelimiter": "|",
-					"compressionCodec": "gzip",
-					"compressionLevel": "Fastest",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
