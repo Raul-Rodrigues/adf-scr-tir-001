@@ -13,6 +13,364 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/ext_tskstat')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tskstat"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ext_tskty')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "cn_sqlcaprod",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ca-sdm"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "binary"
+					},
+					{
+						"name": "name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tenant_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "service_provider",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "contact",
+						"type": "binary"
+					},
+					{
+						"name": "logo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "ntext"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "fax_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "alt_phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "binary"
+					},
+					{
+						"name": "inactive",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "version_number",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "creation_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "creation_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "last_update_user",
+						"type": "nvarchar"
+					},
+					{
+						"name": "last_update_date",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "tenant",
+						"type": "binary"
+					},
+					{
+						"name": "ldap_tenant_group",
+						"type": "nvarchar"
+					},
+					{
+						"name": "parent",
+						"type": "binary"
+					},
+					{
+						"name": "fkey_group",
+						"type": "binary"
+					},
+					{
+						"name": "subtenants_ok",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "subtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "supertenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "relatedtenant_group",
+						"type": "binary"
+					},
+					{
+						"name": "tenant_depth",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "auto_rep_version",
+						"type": "timestamp"
+					},
+					{
+						"name": "tou_id",
+						"type": "binary"
+					},
+					{
+						"name": "zCorreo",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zTelefono",
+						"type": "nvarchar"
+					},
+					{
+						"name": "zURL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "logo_picture",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zNotifPers",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zSelecNotifica",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zGC_TipoComentarioPrivado",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "zCntRolAccesoSolicitudes",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tskty"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ext_tz')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1181,6 +1539,159 @@
 					],
 					"script": "source(output(\n\t\tId as string,\n\t\tSinkCreatedOn as timestamp,\n\t\tSinkModifiedOn as timestamp,\n\t\tstatecode as long,\n\t\tstatuscode as long,\n\t\tcmtx_tipodepropuesta as long,\n\t\tcmtx_copia as long,\n\t\tcmtx_migracion as long,\n\t\tcmtx_tiporevision as long,\n\t\tcmtx_aprobaciongerentecomercial as long,\n\t\tcmtx_finformulariocalificacion as long,\n\t\tcmtx_nuevadivisa as long,\n\t\tcmtx_estadonotificaciones as long,\n\t\tcmtx_cerraroportunidad as long,\n\t\tcmtx_proveedorprime as long,\n\t\tcmtx_status as long,\n\t\tcmtx_gtegralcorpapruebacalificacion as long,\n\t\tcmtx_tipodolor as long,\n\t\tcmtx_etapadeproceso as long,\n\t\tskippricecalculation as long,\n\t\tpurchaseprocess as long,\n\t\tcmtx_validacionpreventa as long,\n\t\tinitialcommunication as long,\n\t\tcmtx_naturalezadeoportunidad as long,\n\t\tsalesstagecode as long,\n\t\tcmtx_origen as long,\n\t\tneed as long,\n\t\tcmtx_claridaddelentendimiento as long,\n\t\tmsdyn_forecastcategory as long,\n\t\tcmtx_reqpreventa as long,\n\t\tcmtx_gtegralcorpapruebaprueba as long,\n\t\tpurchasetimeframe as long,\n\t\tcmtx_tiporeapertura as long,\n\t\ttimeline as long,\n\t\tpricingerrorcode as long,\n\t\tcmtx_entendimientodelprocesodedecision as long,\n\t\tcmtx_apruebapreciosymargenes as long,\n\t\tprioritycode as long,\n\t\tsalesstage as long,\n\t\tcmtx_momentodelaoportunidad as long,\n\t\topportunityratingcode as long,\n\t\tcmtx_procesodeventa as long,\n\t\tbudgetstatus as long,\n\t\tcmtx_tipodenegocio as long,\n\t\tcmtx_aprobaciondirector as long,\n\t\tcmtx_transformar as boolean,\n\t\tcaptureproposalfeedback as boolean,\n\t\tevaluatefit as boolean,\n\t\tpresentproposal as boolean,\n\t\tresolvefeedback as boolean,\n\t\tcmtx_validadoporpreventa as boolean,\n\t\tcmtx_negocioregional as boolean,\n\t\tcmtx_commitedtoforecast as boolean,\n\t\tcmtx_existepresupuesto as boolean,\n\t\tcmtx_paradepuracion as boolean,\n\t\tidentifycompetitors as boolean,\n\t\tdecisionmaker as boolean,\n\t\tfiledebrief as boolean,\n\t\tcmtx_considerarendepuracion as boolean,\n\t\tisprivate as boolean,\n\t\tcmtx_cerrarperdida as boolean,\n\t\tpursuitdecision as boolean,\n\t\tcompletefinalproposal as boolean,\n\t\tcmtx_bloqueooportunidad as boolean,\n\t\tcmtx_terminociclopym as boolean,\n\t\tidentifycustomercontacts as boolean,\n\t\tconfirminterest as boolean,\n\t\tsonda_gestionpropietario as boolean,\n\t\tpresentfinalproposal as boolean,\n\t\tcmtx_acuerdosfinales as boolean,\n\t\tidentifypursuitteam as boolean,\n\t\tcmtx_envioaprobacion as boolean,\n\t\tmbo_validarproductointegracion as boolean,\n\t\tcmtx_registroporplanilla as boolean,\n\t\tcmtx_oportunidadcompartida as boolean,\n\t\tdevelopproposal as boolean,\n\t\tisrevenuesystemcalculated as boolean,\n\t\tcmtx_rechazoaprobadoradm as boolean,\n\t\tcmtx_aprobaciondelivery as boolean,\n\t\tcmtx_deseacambiarladivisa as boolean,\n\t\tparticipatesinworkflow as boolean,\n\t\tcmtx_conocemosfactorescriticos as boolean,\n\t\tsendthankyounote as boolean,\n\t\tcmtx_terminociclocalificacion as boolean,\n\t\tcmtx_archivopreventa as boolean,\n\t\tcmtx_registroactivo as boolean,\n\t\tcmtx_avanceetapa3 as boolean,\n\t\tcmtx_avanceetapa2 as boolean,\n\t\tcmtx_avanceetapa1 as boolean,\n\t\tcmtx_avanceetapa5 as boolean,\n\t\tcmtx_avanceetapa4 as boolean,\n\t\tcmtx_poseesondaunaventajacompetitiva as boolean,\n\t\tmbo_omitirvalidacindeproductointegracin as boolean,\n\t\tcompleteinternalreview as boolean,\n\t\tcmtx_gerentegeneralcorp as string,\n\t\tcmtx_gerentegeneralcorp_entitytype as string,\n\t\tcmtx_ganador as string,\n\t\tcmtx_ganador_entitytype as string,\n\t\tcmtx_apadministrativo as string,\n\t\tcmtx_apadministrativo_entitytype as string,\n\t\toriginatingleadid as string,\n\t\toriginatingleadid_entitytype as string,\n\t\towninguser as string,\n\t\towninguser_entitytype as string,\n\t\tcmtx_kpioportunidad as string,\n\t\tcmtx_kpioportunidad_entitytype as string,\n\t\tcmtx_directorventas as string,\n\t\tcmtx_directorventas_entitytype as string,\n\t\towningbusinessunit as string,\n\t\towningbusinessunit_entitytype as string,\n\t\tcmtx_coach as string,\n\t\tcmtx_coach_entitytype as string,\n\t\tcmtx_linea_negocioid as string,\n\t\tcmtx_linea_negocioid_entitytype as string,\n\t\tcmtx_oportunidadpadre as string,\n\t\tcmtx_oportunidadpadre_entitytype as string,\n\t\tcmtx_codres0 as string,\n\t\tcmtx_codres0_entitytype as string,\n\t\tcmtx_admfilial as string,\n\t\tcmtx_admfilial_entitytype as string,\n\t\tcmtx_gerentecomercial as string,\n\t\tcmtx_gerentecomercial_entitytype as string,\n\t\towningteam as string,\n\t\towningteam_entitytype as string,\n\t\tslaid as string,\n\t\tslaid_entitytype as string,\n\t\tcmtx_sponsor as string,\n\t\tcmtx_sponsor_entitytype as string,\n\t\tnew_validarop as string,\n\t\tnew_validarop_entitytype as string,\n\t\tcmtx_filial as string,\n\t\tcmtx_filial_entitytype as string,\n\t\tcmtx_unidadsonda as string,\n\t\tcmtx_unidadsonda_entitytype as string,\n\t\tcontactid as string,\n\t\tcontactid_entitytype as string,\n\t\tcmtx_gtefilial as string,\n\t\tcmtx_gtefilial_entitytype as string,\n\t\tcmtx_recomendadortecnico as string,\n\t\tcmtx_recomendadortecnico_entitytype as string,\n\t\tparentcontactid as string,\n\t\tparentcontactid_entitytype as string,\n\t\tcmtx_oportunidadplanificadaid as string,\n\t\tcmtx_oportunidadplanificadaid_entitytype as string,\n\t\tcmtx_codres1 as string,\n\t\tcmtx_codres1_entitytype as string,\n\t\tcmtx_cmtx_unidad_deliveryid as string,\n\t\tcmtx_cmtx_unidad_deliveryid_entitytype as string,\n\t\tcmtx_concomercial as string,\n\t\tcmtx_concomercial_entitytype as string,\n\t\tcmtx_opppc as string,\n\t\tcmtx_opppc_entitytype as string,\n\t\tcmtx_productoprincipal as string,\n\t\tcmtx_productoprincipal_entitytype as string,\n\t\tcampaignid as string,\n\t\tcampaignid_entitytype as string,\n\t\tcmtx_ofertasonda as string,\n\t\tcmtx_ofertasonda_entitytype as string,\n\t\tocpq_primary_quote_id as string,\n\t\tocpq_primary_quote_id_entitytype as string,\n\t\tcmtx_modalidadoportunidadid as string,\n\t\tcmtx_modalidadoportunidadid_entitytype as string,\n\t\tmodifiedby as string,\n\t\tmodifiedby_entitytype as string,\n\t\tcmtx_codres2 as string,\n\t\tcmtx_codres2_entitytype as string,\n\t\tslainvokedid as string,\n\t\tslainvokedid_entitytype as string,\n\t\tcmtx_decisor as string,\n\t\tcmtx_decisor_entitytype as string,\n\t\tcmtx_creditoycobranza as string,\n\t\tcmtx_creditoycobranza_entitytype as string,\n\t\tcmtx_marketing as string,\n\t\tcmtx_marketing_entitytype as string,\n\t\tcmtx_usuariofinal as string,\n\t\tcmtx_usuariofinal_entitytype as string,\n\t\tcmtx_unidaddenegocio as string,\n\t\tcmtx_unidaddenegocio_entitytype as string,\n\t\ttransactioncurrencyid as string,\n\t\ttransactioncurrencyid_entitytype as string,\n\t\tcmtx_gerentedivision as string,\n\t\tcmtx_gerentedivision_entitytype as string,\n\t\tcreatedonbehalfby as string,\n\t\tcreatedonbehalfby_entitytype as string,\n\t\tcmtx_influenciador as string,\n\t\tcmtx_influenciador_entitytype as string,\n\t\tparentaccountid as string,\n\t\tparentaccountid_entitytype as string,\n\t\tcmtx_preventaprincipal as string,\n\t\tcmtx_preventaprincipal_entitytype as string,\n\t\tcreatedby as string,\n\t\tcreatedby_entitytype as string,\n\t\tmsa_partnerid as string,\n\t\tmsa_partnerid_entitytype as string,\n\t\tcmtx_procesoactivo as string,\n\t\tcmtx_procesoactivo_entitytype as string,\n\t\tcmtx_pais as string,\n\t\tcmtx_pais_entitytype as string,\n\t\tmsa_partneroppid as string,\n\t\tmsa_partneroppid_entitytype as string,\n\t\tmodifiedonbehalfby as string,\n\t\tmodifiedonbehalfby_entitytype as string,\n\t\taccountid as string,\n\t\taccountid_entitytype as string,\n\t\tcmtx_idoportunidadorigen as string,\n\t\tcmtx_idoportunidadorigen_entitytype as string,\n\t\tpricelevelid as string,\n\t\tpricelevelid_entitytype as string,\n\t\tcmtx_unidaddenegocioresponsableid as string,\n\t\tcmtx_unidaddenegocioresponsableid_entitytype as string,\n\t\townerid as string,\n\t\townerid_entitytype as string,\n\t\tcustomerid as string,\n\t\tcustomerid_entitytype as string,\n\t\ttotaldiscountamount_base as decimal(18,2),\n\t\tcmtx_recalculo as decimal(18,2),\n\t\ttotalamountlessfreight as decimal(18,2),\n\t\tcmtx_presupuesto as decimal(18,2),\n\t\tcmtx_calgtegralcorp_base as decimal(18,2),\n\t\tfreightamount as decimal(18,2),\n\t\tcmtx_costo as decimal(18,2),\n\t\ttotalamount as decimal(18,2),\n\t\tcmtx_margenliquido_base as decimal(18,2),\n\t\tcmtx_costo_base as decimal(18,2),\n\t\tactualvalue as decimal(18,2),\n\t\tcmtx_calmontogtediv_base as decimal(18,2),\n\t\ttotallineitemdiscountamount as decimal(18,2),\n\t\tactualvalue_base as decimal(18,2),\n\t\tcmtx_calgtegralcorp as decimal(18,2),\n\t\tbudgetamount as decimal(18,2),\n\t\ttotallineitemamount_base as decimal(18,2),\n\t\tcmtx_total_base as decimal(18,2),\n\t\tcmtx_calmontogtecomercial as decimal(18,2),\n\t\tcmtx_montoofertaganadora as decimal(18,2),\n\t\tcmtx_impuesto_base as decimal(18,2),\n\t\tcmtx_margenliquido as decimal(18,2),\n\t\tfreightamount_base as decimal(18,2),\n\t\tcmtx_montoofertaganadora_base as decimal(18,2),\n\t\tcmtx_margen as decimal(18,2),\n\t\tcmtx_calmontogtediv as decimal(18,2),\n\t\ttotaltax as decimal(18,2),\n\t\tcmtx_margen_base as decimal(18,2),\n\t\ttotaltax_base as decimal(18,2),\n\t\tcmtx_calmontogtecomercial_base as decimal(18,2),\n\t\tcmtx_recalculo_base as decimal(18,2),\n\t\ttotalamountlessfreight_base as decimal(18,2),\n\t\ttotaldiscountamount as decimal(18,2),\n\t\testimatedvalue_base as decimal(18,2),\n\t\ttotalamount_base as decimal(18,2),\n\t\tdiscountamount_base as decimal(18,2),\n\t\ttotallineitemdiscountamount_base as decimal(18,2),\n\t\tcmtx_total as decimal(18,2),\n\t\ttotallineitemamount as decimal(18,2),\n\t\tdiscountamount as decimal(18,2),\n\t\tbudgetamount_base as decimal(18,2),\n\t\testimatedvalue as decimal(18,2),\n\t\tcmtx_impuesto as decimal(18,2),\n\t\tcmtx_presupuesto_base as decimal(18,2),\n\t\tcmtx_preventaprincipalname as string,\n\t\tcmtx_montoofertaganadora_decimal as decimal(18,2),\n\t\tutcconversiontimezonecode as long,\n\t\tcmtx_usuariocrm4 as string,\n\t\tcmtx_diferenciador_ventaja as string,\n\t\tcmtx_filialname as string,\n\t\tcmtx_apadministrativoname as string,\n\t\ttransactioncurrencyidname as string,\n\t\tcmtx_fechacierreoportunidad as timestamp,\n\t\tcmtx_costo_decimal as decimal(18,2),\n\t\tcmtx_linea_negocioidname as string,\n\t\tcmtx_kpioportunidadname as string,\n\t\tstepname as string,\n\t\tmodifiedonbehalfbyyominame as string,\n\t\tcmtx_importesinfletetotal_decimal as decimal(18,2),\n\t\tcmtx_porcentajemargenliquido as decimal(18,2),\n\t\topportunityid as string,\n\t\tcreatedbyname as string,\n\t\toverriddencreatedon as timestamp,\n\t\tcmtx_gerentecomercialyominame as string,\n\t\temailaddress as string,\n\t\tqualificationcomments as string,\n\t\tcmtx_sponsoryominame as string,\n\t\tcmtx_total_decimal as decimal(18,2),\n\t\tcmtx_porcentajemargenbruto as decimal(18,2),\n\t\tcmtx_justificacincambiodefechaestcierre as string,\n\t\tcmtx_gerentegeneralcorpname as string,\n\t\tcmtx_importedeflete_decimal as decimal(18,2),\n\t\tcmtx_concomercialyominame as string,\n\t\tstageid as string,\n\t\tslainvokedidname as string,\n\t\tcmtx_ingresosreales_decimal as decimal(18,2),\n\t\tcmtx_valor_status_crm4 as string,\n\t\tdiscountpercentage as decimal(18,2),\n\t\tcmtx_concomercialname as string,\n\t\tcmtx_marketingyominame as string,\n\t\tonholdtime as long,\n\t\tcustomeridname as string,\n\t\tcmtx_importededescuentototal_decimal as decimal(18,2),\n\t\tcmtx_importededescuentodeoportunidad_decimal as decimal(18,2),\n\t\tcmtx_oportunidadplanificadaidname as string,\n\t\tcmtx_cantidadcompetidores as long,\n\t\tcmtx_importededescuentoelementodelineatotal_de as decimal(18,2),\n\t\tcmtx_sumaaprobacionesdelivery as long,\n\t\tcmtx_usuariofinalyominame as string,\n\t\tcmtx_marketingname as string,\n\t\tcmtx_ganadorname as string,\n\t\tmodifiedbyyominame as string,\n\t\tcmtx_importedetalladototal_decimal as decimal(18,2),\n\t\tcustomerneed as string,\n\t\tcmtx_procesoactivoname as string,\n\t\tparentaccountidyominame as string,\n\t\testimatedclosedate as timestamp,\n\t\tcmtx_codres2name as string,\n\t\tcloseprobability as long,\n\t\tcmtx_usuariofinalname as string,\n\t\tcmtx_gerentecomercialname as string,\n\t\tcmtx_solucionfinal as string,\n\t\tcmtx_ordendecompra as string,\n\t\tcmtx_fechaactualizacionconsolidado as timestamp,\n\t\tsonda_fechaultimagestioncomercial as timestamp,\n\t\tcmtx_idoportunidad as string,\n\t\tcmtx_influenciadorname as string,\n\t\tcmtx_coachname as string,\n\t\tmsa_partneridyominame as string,\n\t\tcmtx_influenciadoryominame as string,\n\t\tmodifiedon as timestamp,\n\t\tcreatedonbehalfbyname as string,\n\t\tcmtx_fechacompra as timestamp,\n\t\tcmtx_importedepresupuesto_decimal as decimal(18,2),\n\t\tcmtx_proceso_toma_desicion as string,\n\t\tcmtx_costo_date as timestamp,\n\t\tcmtx_gerentedivisionname as string,\n\t\toriginatingleadidyominame as string,\n\t\tocpq_primary_quote_idname as string,\n\t\tcmtx_unidadnegociocrm4 as string,\n\t\tactualclosedate as timestamp,\n\t\tcmtx_coachyominame as string,\n\t\tcmtx_nombreproveedor as string,\n\t\tcmtx_fechainiciooperacion as timestamp,\n\t\tcmtx_preventaprincipalyominame as string,\n\t\tlastonholdtime as timestamp,\n\t\tcmtx_aprobacionesdeliverycal as long,\n\t\tversionnumber as long,\n\t\tcmtx_ofertasondaname as string,\n\t\tdescription as string,\n\t\tcmtx_banderaestado as string,\n\t\tcmtx_directorventasname as string,\n\t\tcmtx_costo_state as long,\n\t\taccountidyominame as string,\n\t\tcmtx_indicarfactorescriticos as string,\n\t\tcmtx_numeroasignacion as string,\n\t\tcmtx_descripcionproyecto as string,\n\t\tcmtx_admfilialname as string,\n\t\tparentaccountidname as string,\n\t\tcmtx_admfilialyominame as string,\n\t\tcmtx_presentaciondelaoferta as timestamp,\n\t\tcmtx_descripcion_solucion as string,\n\t\tcmtx_recomendadortecniconame as string,\n\t\ttimespentbymeonemailandmeetings as string,\n\t\tcmtx_identificaciondeldolor as string,\n\t\tschedulefollowup_qualify as timestamp,\n\t\texchangerate as decimal(18,2),\n\t\tcmtx_unidaddenegocioname as string,\n\t\tcmtx_observacionescierre as string,\n\t\tcmtx_estimatedvalue_decimal as decimal(18,2),\n\t\tcmtx_gtefilialyominame as string,\n\t\tcustomeridyominame as string,\n\t\tcmtx_ganadorotros as string,\n\t\tcmtx_impuestototal_decimal as decimal(18,2),\n\t\tcmtx_totalactividaddelivery as long,\n\t\tfinaldecisiondate as timestamp,\n\t\tcmtx_margen_decimal as decimal(18,2),\n\t\tteamsfollowed as long,\n\t\tcmtx_decisorname as string,\n\t\tquotecomments as string,\n\t\tcmtx_margen_date as timestamp,\n\t\tproposedsolution as string,\n\t\tcreatedonbehalfbyyominame as string,\n\t\tcmtx_codres0name as string,\n\t\tparentcontactidyominame as string,\n\t\tmbo_idtributario as string,\n\t\taccountidname as string,\n\t\tcmtx_detalledeldolor as string,\n\t\tprocessid as string,\n\t\towneridtype as string,\n\t\tcmtx_directorventasyominame as string,\n\t\ttraversedpath as string,\n\t\tcmtx_gtefilialname as string,\n\t\tcmtx_fechaenviopropuesta as timestamp,\n\t\tscheduleproposalmeeting as timestamp,\n\t\tcmtx_gerentedivisionyominame as string,\n\t\timportsequencenumber as long,\n\t\tcmtx_presupuestodelcliente_decimal as decimal(18,2),\n\t\tcmtx_creditoycobranzayominame as string,\n\t\tcmtx_ganadoryominame as string,\n\t\tcontactidname as string,\n\t\tpricelevelidname as string,\n\t\towneridyominame as string,\n\t\tcurrentsituation as string,\n\t\tcustomeridtype as string,\n\t\tcmtx_totalamount_decimal as decimal(18,2),\n\t\tcmtx_paisname as string,\n\t\tmbo_idcostopersonas as string,\n\t\towneridname as string,\n\t\tcmtx_idcrm4 as string,\n\t\tcmtx_modalidadoportunidadidname as string,\n\t\tstepid as string,\n\t\tcmtx_codres1name as string,\n\t\tcmtx_unidadsondaname as string,\n\t\tcreatedon as timestamp,\n\t\tparentcontactidname as string,\n\t\tcampaignidname as string,\n\t\tcmtx_creditoycobranzaname as string,\n\t\tcmtx_gerentegeneralcorpyominame as string,\n\t\tcmtx_idoportunidadorigenname as string,\n\t\tcmtx_cmtx_unidad_deliveryidname as string,\n\t\tcmtx_tasadecambio_decimal as decimal(18,2),\n\t\tmodifiedonbehalfbyname as string,\n\t\tcmtx_oportunidadpadrename as string,\n\t\tmsa_partneroppidname as string,\n\t\tcmtx_fechacambiodeetapa as timestamp,\n\t\tcmtx_margen_state as long,\n\t\tcmtx_opppcname as string,\n\t\tcmtx_calmontogtediv_decimal as decimal(18,2),\n\t\tcreatedbyyominame as string,\n\t\tnew_identificadoroportunidadplanificada as string,\n\t\tname as string,\n\t\tmodifiedbyname as string,\n\t\tcmtx_recomendadortecnicoyominame as string,\n\t\tmsa_partneroppidyominame as string,\n\t\tcustomerpainpoints as string,\n\t\tcmtx_sponsorname as string,\n\t\tcmtx_unidaddenegocioresponsableidname as string,\n\t\tcmtx_rechazosdeliverycal as long,\n\t\tcontactidyominame as string,\n\t\tcmtx_apadministrativoyominame as string,\n\t\tcmtx_margenreal as decimal(18,2),\n\t\ttimezoneruleversionnumber as long,\n\t\tcmtx_opparagua as string,\n\t\tslaname as string,\n\t\tmsa_partneridname as string,\n\t\tcmtx_calgtegralcorp_decimal as decimal(18,2),\n\t\tcmtx_decisoryominame as string,\n\t\tschedulefollowup_prospect as timestamp,\n\t\toriginatingleadidname as string,\n\t\tcmtx_calmontogtecomercial_decimal as decimal(18,2),\n\t\tcmtx_fechainiciofacturacion as timestamp,\n\t\tnew_validaropname as string,\n\t\tcmtx_productoprincipalname as string,\n\t\tcmtx_esbigdeals as boolean\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tentity: 'opportunity',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: '',\n\tfileSystem: 'commondataservice-sondamigraci-org187dcebc') ~> opportunity\nsource(output(\n\t\tStateMetadata as (EntityName as string, State as string, IsUserLocalizedLabel as boolean, LocalizedLabelLanguageCode as string, LocalizedLabel as string)[],\n\t\tStatusMetadata as (EntityName as string, State as string, Status as string, IsUserLocalizedLabel as boolean, LocalizedLabelLanguageCode as string, LocalizedLabel as string)[],\n\t\tGlobalOptionSetMetadata as (OptionSetName as string, Option as string, IsUserLocalizedLabel as boolean, LocalizedLabelLanguageCode as string, LocalizedLabel as string)[],\n\t\tOptionSetMetadata as (EntityName as string, OptionSetName as string, Option as string, IsUserLocalizedLabel as boolean, LocalizedLabelLanguageCode as string, LocalizedLabel as string)[],\n\t\tTargetMetadata as (EntityName as string, AttributeName as string, ReferencedEntity as string, ReferencedAttribute as string)[],\n\t\tAttributeMetadata as (EntityName as string, AttributeName as string, AttributeType as string, AttributeTypeCode as string, Version as string, Timestamp as string, MetadataId as string, Precision as string)[]\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> oppmetadata\nopportunity select(mapColumn(\n\t\tparentaccountidname,\n\t\townerid,\n\t\towneridname,\n\t\tcmtx_idoportunidad,\n\t\topportunityId = opportunityid,\n\t\tstatecode,\n\t\tstatuscode,\n\t\tsalesstagecode,\n\t\tsalesstage,\n\t\tcmtx_etapadeproceso,\n\t\tcmtx_naturalezadeoportunidad,\n\t\tname,\n\t\tcmtx_descripcion_solucion,\n\t\tcmtx_pais,\n\t\tcmtx_paisname,\n\t\tcmtx_linea_negocioid,\n\t\tcmtx_linea_negocioidname,\n\t\tcloseprobability,\n\t\tcmtx_claridaddelentendimiento,\n\t\tcmtx_porcentajemargenbruto,\n\t\tcmtx_porcentajemargenliquido,\n\t\tcmtx_ordendecompra,\n\t\tcmtx_terminociclocalificacion,\n\t\tcmtx_ganador,\n\t\tcmtx_ganadorname,\n\t\tcmtx_codres2,\n\t\tcmtx_codres2name,\n\t\tcmtx_negocioregional,\n\t\tcmtx_commitedtoforecast,\n\t\tcreatedbyname,\n\t\tcreatedon,\n\t\testimatedclosedate,\n\t\tactualclosedate,\n\t\tcmtx_fechacierreoportunidad,\n\t\tcmtx_fechacambiodeetapa,\n\t\tcmtx_fechainiciofacturacion,\n\t\tcmtx_fechaenviopropuesta,\n\t\tcmtx_fechainiciooperacion\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> selectopportunity\noppmetadata foldDown(unroll(StateMetadata),\n\tmapColumn(\n\t\tEntityName = StateMetadata.EntityName,\n\t\tState = StateMetadata.State,\n\t\tIsUserLocalizedLabel = StateMetadata.IsUserLocalizedLabel,\n\t\tLocalizedLabelLanguageCode = StateMetadata.LocalizedLabelLanguageCode,\n\t\tLocalizedLabel = StateMetadata.LocalizedLabel\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> mdstate\nselectopportunity, Selectstate lookup(statecode == toInteger(State),\n\tmultiple: false,\n\tpickup: 'first',\n\tasc(LocalizedLabelLanguageCode, true),\n\tbroadcast: 'auto')~> stateport\nmdstate select(mapColumn(\n\t\tState,\n\t\tLocalizedLabelLanguageCode,\n\t\tLocalizedLabel\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Selectstate\nstateport select(mapColumn(\n\t\tparentaccountidname,\n\t\townerid,\n\t\towneridname,\n\t\tcmtx_idoportunidad,\n\t\topportunityId,\n\t\tstatecode,\n\t\tstatecodename = LocalizedLabel,\n\t\tstatuscode,\n\t\tsalesstagecode,\n\t\tsalesstage,\n\t\tcmtx_etapadeproceso,\n\t\tcmtx_naturalezadeoportunidad,\n\t\tname,\n\t\tcmtx_descripcion_solucion,\n\t\tcmtx_pais,\n\t\tcmtx_paisname,\n\t\tcmtx_linea_negocioid,\n\t\tcmtx_linea_negocioidname,\n\t\tcloseprobability,\n\t\tcmtx_claridaddelentendimiento,\n\t\tcmtx_porcentajemargenbruto,\n\t\tcmtx_porcentajemargenliquido,\n\t\tcmtx_ordendecompra,\n\t\tcmtx_terminociclocalificacion,\n\t\tcmtx_ganador,\n\t\tcmtx_ganadorname,\n\t\tcmtx_codres2,\n\t\tcmtx_codres2name,\n\t\tcmtx_negocioregional,\n\t\tcmtx_commitedtoforecast,\n\t\tcreatedbyname,\n\t\tcreatedon,\n\t\testimatedclosedate,\n\t\tactualclosedate,\n\t\tcmtx_fechacierreoportunidad,\n\t\tcmtx_fechacambiodeetapa,\n\t\tcmtx_fechainiciofacturacion,\n\t\tcmtx_fechaenviopropuesta,\n\t\tcmtx_fechainiciooperacion\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> selectport\nselectport, Selectstate lookup(statecode == toInteger(State),\n\tmultiple: false,\n\tpickup: 'last',\n\tasc(LocalizedLabelLanguageCode, true),\n\tbroadcast: 'auto')~> statespa\nstatespa select(mapColumn(\n\t\tparentaccountidname,\n\t\townerid,\n\t\towneridname,\n\t\tcmtx_idoportunidad,\n\t\topportunityId,\n\t\tstatecode,\n\t\tstatecodenameport = statecodename,\n\t\tstatecodenamespa = LocalizedLabel,\n\t\tstatuscode,\n\t\tsalesstagecode,\n\t\tsalesstage,\n\t\tcmtx_etapadeproceso,\n\t\tcmtx_naturalezadeoportunidad,\n\t\tname,\n\t\tcmtx_descripcion_solucion,\n\t\tcmtx_pais,\n\t\tcmtx_paisname,\n\t\tcmtx_linea_negocioid,\n\t\tcmtx_linea_negocioidname,\n\t\tcloseprobability,\n\t\tcmtx_claridaddelentendimiento,\n\t\tcmtx_porcentajemargenbruto,\n\t\tcmtx_porcentajemargenliquido,\n\t\tcmtx_ordendecompra,\n\t\tcmtx_terminociclocalificacion,\n\t\tcmtx_ganador,\n\t\tcmtx_ganadorname,\n\t\tcmtx_codres2,\n\t\tcmtx_codres2name,\n\t\tcmtx_negocioregional,\n\t\tcmtx_commitedtoforecast,\n\t\tcreatedbyname,\n\t\tcreatedon,\n\t\testimatedclosedate,\n\t\tactualclosedate,\n\t\tcmtx_fechacierreoportunidad,\n\t\tcmtx_fechacambiodeetapa,\n\t\tcmtx_fechainiciofacturacion,\n\t\tcmtx_fechaenviopropuesta,\n\t\tcmtx_fechainiciooperacion\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Selectspa\nSelectspa sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> dtopportunity"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CA2Parquet')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "call_req2parquet",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "dbo.call_req"
+							},
+							{
+								"name": "Destination",
+								"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/call_req/"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"sqlReaderQuery": "SELECT TOP 10 \n\topen_date,\n\tformat(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101')),'yyyy-MM-dd') as ticket_open_date,\n        year(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as year_open_date,\n        month(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as month_open_date,\n        day(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101'))) as day_open_date,\n\tref_num \nFROM [dbo].[call_req]\nWHERE ?AdfDynamicRangePartitionCondition",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "DynamicRange",
+								"partitionSettings": {
+									"partitionColumnName": "ref_num",
+									"partitionUpperBound": "10000483",
+									"partitionLowerBound": "5737554"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"parallelCopies": 5,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "open_date",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "open_date",
+											"type": "Int32",
+											"physicalType": "INT_32"
+										}
+									},
+									{
+										"source": {
+											"name": "ticket_open_date",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "ticket_open_date",
+											"type": "String",
+											"physicalType": "UTF8"
+										}
+									},
+									{
+										"source": {
+											"name": "year_open_date",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "year_open_date",
+											"type": "Int32",
+											"physicalType": "INT_32"
+										}
+									},
+									{
+										"source": {
+											"name": "month_open_date",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "month_open_date",
+											"type": "Int32",
+											"physicalType": "INT_32"
+										}
+									},
+									{
+										"source": {
+											"name": "day_open_date",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "day_open_date",
+											"type": "Int32",
+											"physicalType": "INT_32"
+										}
+									},
+									{
+										"source": {
+											"name": "ref_num",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "ref_num",
+											"type": "String",
+											"physicalType": "UTF8"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "ext_casdm_call_req",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "dt_casdm_call_req",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -4327,6 +4838,8 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ext_urgncy')]",
 				"[concat(variables('factoryId'), '/datasets/ext_usp_contact_handling')]",
+				"[concat(variables('factoryId'), '/datasets/ext_tskstat')]",
+				"[concat(variables('factoryId'), '/datasets/ext_tskty')]",
 				"[concat(variables('factoryId'), '/datasets/ext_tz')]",
 				"[concat(variables('factoryId'), '/datasets/ext_usp_target_time')]",
 				"[concat(variables('factoryId'), '/datasets/ext_zContrato')]",
