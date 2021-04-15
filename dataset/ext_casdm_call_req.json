@@ -1,0 +1,731 @@
+{
+	"name": "ext_casdm_call_req",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cn_sqlcaprod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "persid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ref_num",
+				"type": "nvarchar"
+			},
+			{
+				"name": "summary",
+				"type": "nvarchar"
+			},
+			{
+				"name": "description",
+				"type": "ntext"
+			},
+			{
+				"name": "status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "active_flag",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "open_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "time_spent_sum",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "last_mod_dt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "last_mod_by",
+				"type": "binary"
+			},
+			{
+				"name": "close_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "resolve_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rootcause",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "log_agent",
+				"type": "binary"
+			},
+			{
+				"name": "assignee",
+				"type": "binary"
+			},
+			{
+				"name": "group_id",
+				"type": "binary"
+			},
+			{
+				"name": "customer",
+				"type": "binary"
+			},
+			{
+				"name": "charge_back_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "affected_rc",
+				"type": "binary"
+			},
+			{
+				"name": "support_lev",
+				"type": "nvarchar"
+			},
+			{
+				"name": "category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "solution",
+				"type": "nvarchar"
+			},
+			{
+				"name": "impact",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "urgency",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "severity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "extern_ref",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_act_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cr_tticket",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "parent",
+				"type": "nvarchar"
+			},
+			{
+				"name": "template_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sla_violation",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "predicted_sla_viol",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "macro_predict_viol",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_via",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "call_back_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "call_back_flag",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "event_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sched_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "string6",
+				"type": "nvarchar"
+			},
+			{
+				"name": "problem",
+				"type": "nvarchar"
+			},
+			{
+				"name": "incident_priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "change",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ticket_avoided",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tenant",
+				"type": "binary"
+			},
+			{
+				"name": "cawf_procid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "caused_by_chg",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "outage_start_time",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "outage_end_time",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "affected_service",
+				"type": "binary"
+			},
+			{
+				"name": "external_system_ticket",
+				"type": "ntext"
+			},
+			{
+				"name": "incorrectly_assigned",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "major_incident",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "orig_user_admin_org",
+				"type": "binary"
+			},
+			{
+				"name": "orig_user_cost_center",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "orig_user_dept",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "orig_user_organization",
+				"type": "binary"
+			},
+			{
+				"name": "outage_detail_what",
+				"type": "ntext"
+			},
+			{
+				"name": "outage_detail_who",
+				"type": "ntext"
+			},
+			{
+				"name": "outage_detail_why",
+				"type": "ntext"
+			},
+			{
+				"name": "outage_reason_desc",
+				"type": "ntext"
+			},
+			{
+				"name": "outage_type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "pct_service_restored",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "remote_control_used",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "requested_by",
+				"type": "binary"
+			},
+			{
+				"name": "resolution_code",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "resolution_method",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "resolvable_at_lower",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "return_to_service",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "symptom_code",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_closed_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_closed_last",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_hold_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_hold_last",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_resolved_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_resolved_last",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "target_start_last",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "caextwf_instance_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sap_category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_client",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_component",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_cprog",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_dbsys",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_frontend",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_instance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_msg",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_os",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sap_sftwcomp",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_sftwcomppatch",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_sftwcomprel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_solman",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_state",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sap_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_subject",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_syshost",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_sysid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_systyp",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_userstatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sap_xnum",
+				"type": "nvarchar"
+			},
+			{
+				"name": "fcr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zEstadoAnterior",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zCodigoMoebius",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zTDAVencido",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zTDSVencido",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zContrato",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zEmpresaBenef",
+				"type": "binary"
+			},
+			{
+				"name": "zEmpresaParam",
+				"type": "binary"
+			},
+			{
+				"name": "zServicio",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaCorreo",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPospuesto",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zreporting_met",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zGrupoAnterior",
+				"type": "binary"
+			},
+			{
+				"name": "zReapertura",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zIncumplimiento",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "heat",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "call_back_text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "reminder_duration",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "start_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "est_comp_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "actual_comp_date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaUltimaCategoria",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zReportInfo",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zReporteCategoria",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zReporteTipo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zResuelvePadre",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPrimerInProgress",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zUbicacion",
+				"type": "binary"
+			},
+			{
+				"name": "zAsignacionManual",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zTDA_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zTDS_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zISMid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zDeptoBenef",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zEncuesta",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zOrgAdmBenef",
+				"type": "binary"
+			},
+			{
+				"name": "zOrgFunBenef",
+				"type": "binary"
+			},
+			{
+				"name": "zDeltaAfectado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zDeltaAsignado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaAperturaZHAfectado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaAperturaZHAsignado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPrevistaTDAZHAfectado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPrevistaTDAZHAsignado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPrevistaTDSZHAfectado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaPrevistaTDSZHAsignado",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zZHAfectado",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zZHAsignado",
+				"type": "nvarchar"
+			},
+			{
+				"name": "current_wrkshft",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zUrlEncuesta",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zSolucionMobile_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zFechaVencEncuesta",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zFechaCierreInicial",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "call_req"
+		}
+	}
+}

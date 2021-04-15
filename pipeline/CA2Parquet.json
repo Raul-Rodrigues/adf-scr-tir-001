@@ -1,0 +1,73 @@
+{
+	"name": "CA2Parquet",
+	"properties": {
+		"activities": [
+			{
+				"name": "call_req2parquet",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.call_req"
+					},
+					{
+						"name": "Destination",
+						"value": "acr-p1-prod-eus-001/acr-p1-ca-sdm/call_req/"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT TOP 10 \n\topen_date,\n\tformat(dateadd(MI, -180, dateadd(SS, convert(int,open_date), '19700101')),'yyyy-MM-dd') as ticket_open_date,\n\tref_num \nFROM [dbo].[call_req]\nWHERE ?AdfDynamicRangePartitionCondition",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "DynamicRange",
+						"partitionSettings": {
+							"partitionColumnName": "ticket_open_date",
+							"partitionUpperBound": "2021-01-01",
+							"partitionLowerBound": "2020-01-01"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ext_casdm_call_req",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dt_casdm_call_req",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
