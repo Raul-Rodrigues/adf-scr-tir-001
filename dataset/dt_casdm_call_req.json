@@ -1,0 +1,25 @@
+{
+	"name": "dt_casdm_call_req",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cn_dls_p1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "acr-p1-ca-sdm/call_req",
+				"fileSystem": "acr-p1-prod-eus-001"
+			},
+			"columnDelimiter": "|",
+			"compressionCodec": "snappy",
+			"compressionLevel": "Fastest",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
