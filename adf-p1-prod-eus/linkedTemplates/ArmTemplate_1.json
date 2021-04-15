@@ -604,15 +604,19 @@
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "Parquet",
+				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "teste.parquet",
-						"folderPath": "acr-p1-ca-sdm/",
+						"folderPath": "acr-p1-ca-sdm/call_req",
 						"fileSystem": "acr-p1-prod-eus-001"
 					},
-					"compressionCodec": "snappy"
+					"columnDelimiter": "|",
+					"compressionCodec": "gzip",
+					"compressionLevel": "Fastest",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
 				},
 				"schema": []
 			},
