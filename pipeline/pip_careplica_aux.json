@@ -449,7 +449,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select contact_uuid,replace(replace(replace(last_name,char(10),''),char(13),''),char(34),'') as last_name, \nreplace(replace(replace(first_name,char(10),''),char(13),''),char(34),'') as first_name,\nreplace(replace(replace(middle_name,char(10),''),char(13),''),char(34),'') as middle_name,\nreplace(replace(replace(alias,char(10),''),char(13),''),char(34),'') as alias,\nreplace(replace(replace(email_address,char(10),''),char(13),''),char(34),'') as email_address,\ninactive, contact_type, organization_uuid, company_uuid, department,admin_organization_uuid\nfrom ca_contact",
+						"sqlReaderQuery": "select contact_uuid,replace(replace(replace(last_name,char(10),''),char(13),''),char(34),'') as last_name, \nreplace(replace(replace(first_name,char(10),''),char(13),''),char(34),'') as first_name,\nreplace(replace(replace(middle_name,char(10),''),char(13),''),char(34),'') as middle_name,\nreplace(replace(replace(alias,char(10),''),char(13),''),char(34),'') as alias,\nreplace(replace(replace(email_address,char(10),''),char(13),''),char(34),'') as email_address,\ninactive, contact_type, organization_uuid, company_uuid, department,admin_organization_uuid,tenant\nfrom ca_contact",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -587,6 +587,16 @@
 								"sink": {
 									"type": "Byte[]",
 									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"name": "tenant",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"type": "Byte[]",
+									"ordinal": 13
 								}
 							}
 						]
