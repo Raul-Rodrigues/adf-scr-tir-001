@@ -1,0 +1,35 @@
+{
+	"name": "trg_pause_resume_pool",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pip_resume_synapse_pools",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sql_pool": "sqldw_prd"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-05-07T18:37:00",
+				"timeZone": "Pacific SA Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						5
+					]
+				}
+			}
+		}
+	}
+}
