@@ -12646,7 +12646,7 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Day",
+						"frequency": "Week",
 						"interval": 1,
 						"startTime": "2021-05-07T18:37:00",
 						"timeZone": "Pacific SA Standard Time",
@@ -12656,6 +12656,13 @@
 							],
 							"hours": [
 								5
+							],
+							"weekDays": [
+								"Monday",
+								"Tuesday",
+								"Wednesday",
+								"Thursday",
+								"Friday"
 							]
 						}
 					}
