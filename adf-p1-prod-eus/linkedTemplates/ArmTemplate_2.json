@@ -710,11 +710,19 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Day",
+						"frequency": "Week",
 						"interval": 1,
 						"startTime": "2021-01-14T22:00:00",
 						"timeZone": "Pacific SA Standard Time",
-						"schedule": {}
+						"schedule": {
+							"weekDays": [
+								"Monday",
+								"Tuesday",
+								"Wednesday",
+								"Thursday",
+								"Friday"
+							]
+						}
 					}
 				}
 			},
