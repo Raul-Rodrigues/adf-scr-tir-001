@@ -33,7 +33,7 @@
 			"value": "karen.bello@sonda.com"
 		},
 		"trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool": {
-			"value": "sqldw_casdm_prd"
+			"value": "sqldw_prd"
 		},
 		"containerUri": {
 			"value": ""

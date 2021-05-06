@@ -17,7 +17,7 @@
 		},
 		"trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool": {
 			"type": "string",
-			"defaultValue": "sqldw_casdm_prd"
+			"defaultValue": "sqldw_prd"
 		}
 	},
 	"variables": {
@@ -708,8 +708,9 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2021-01-14T22:00:00Z",
-						"timeZone": "UTC"
+						"startTime": "2021-01-14T22:00:00",
+						"timeZone": "Pacific SA Standard Time",
+						"schedule": {}
 					}
 				}
 			},
