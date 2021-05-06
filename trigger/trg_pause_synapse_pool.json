@@ -10,7 +10,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"sql_pool": "sqldw_casdm_prd"
+					"sql_pool": "sqldw_prd"
 				}
 			}
 		],
@@ -19,8 +19,8 @@
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2021-01-14T22:00:00Z",
-				"timeZone": "UTC"
+				"startTime": "2021-01-14T22:00:00",
+				"timeZone": "Pacific SA Standard Time"
 			}
 		}
 	}
