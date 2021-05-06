@@ -47,6 +47,10 @@
 			"type": "string",
 			"defaultValue": "sqldw_prd"
 		},
+		"trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool": {
+			"type": "string",
+			"defaultValue": "sqldw_prd"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -141,6 +145,9 @@
 					},
 					"trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool": {
 						"value": "[parameters('trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool')]"
+					},
+					"trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool": {
+						"value": "[parameters('trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool')]"
 					}
 				}
 			},

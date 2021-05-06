@@ -18,6 +18,10 @@
 		"trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool": {
 			"type": "string",
 			"defaultValue": "sqldw_prd"
+		},
+		"trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool": {
+			"type": "string",
+			"defaultValue": "sqldw_prd"
 		}
 	},
 	"variables": {
@@ -711,6 +715,44 @@
 						"startTime": "2021-01-14T22:00:00",
 						"timeZone": "Pacific SA Standard Time",
 						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trg_pause_resume_pool')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pip_resume_synapse_pools",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sql_pool": "[parameters('trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2021-05-07T18:37:00",
+						"timeZone": "Pacific SA Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								5
+							]
+						}
 					}
 				}
 			},
@@ -1450,187 +1492,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "call_req"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/cn_sqlcaprod')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ext_ca_act_log')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "cn_sqlcaprod",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "ca-sdm"
-				},
-				"annotations": [],
-				"type": "SqlServerTable",
-				"schema": [
-					{
-						"name": "id",
-						"type": "binary"
-					},
-					{
-						"name": "name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "tenant_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "service_provider",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "contact",
-						"type": "binary"
-					},
-					{
-						"name": "logo",
-						"type": "nvarchar"
-					},
-					{
-						"name": "description",
-						"type": "ntext"
-					},
-					{
-						"name": "phone_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "fax_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "alt_phone",
-						"type": "nvarchar"
-					},
-					{
-						"name": "location",
-						"type": "binary"
-					},
-					{
-						"name": "inactive",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "version_number",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "creation_user",
-						"type": "nvarchar"
-					},
-					{
-						"name": "creation_date",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "last_update_user",
-						"type": "nvarchar"
-					},
-					{
-						"name": "last_update_date",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "tenant",
-						"type": "binary"
-					},
-					{
-						"name": "ldap_tenant_group",
-						"type": "nvarchar"
-					},
-					{
-						"name": "parent",
-						"type": "binary"
-					},
-					{
-						"name": "fkey_group",
-						"type": "binary"
-					},
-					{
-						"name": "subtenants_ok",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "subtenant_group",
-						"type": "binary"
-					},
-					{
-						"name": "supertenant_group",
-						"type": "binary"
-					},
-					{
-						"name": "relatedtenant_group",
-						"type": "binary"
-					},
-					{
-						"name": "tenant_depth",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "auto_rep_version",
-						"type": "timestamp"
-					},
-					{
-						"name": "tou_id",
-						"type": "binary"
-					},
-					{
-						"name": "zCorreo",
-						"type": "nvarchar"
-					},
-					{
-						"name": "zTelefono",
-						"type": "nvarchar"
-					},
-					{
-						"name": "zURL",
-						"type": "nvarchar"
-					},
-					{
-						"name": "logo_picture",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "zNotifPers",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "zSelecNotifica",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "zGC_TipoComentarioPrivado",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "zCntRolAccesoSolicitudes",
-						"type": "int",
-						"precision": 10
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "act_log"
 				}
 			},
 			"dependsOn": [

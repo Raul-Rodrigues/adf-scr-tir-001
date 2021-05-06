@@ -46,6 +46,10 @@
 		"trg_pause_synapse_pool_properties_pip_pause_synapse_pools_parameters_sql_pool": {
 			"type": "string",
 			"defaultValue": "sqldw_prd"
+		},
+		"trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool": {
+			"type": "string",
+			"defaultValue": "sqldw_prd"
 		}
 	},
 	"variables": {
@@ -12619,6 +12623,46 @@
 				"[concat(variables('factoryId'), '/linkedServices/cn_dls_bra_p1')]",
 				"[concat(variables('factoryId'), '/datasets/mdopportunity')]",
 				"[concat(variables('factoryId'), '/datasets/dt_opportunity')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trg_pause_resume_pool')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pip_resume_synapse_pools",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sql_pool": "[parameters('trg_pause_resume_pool_properties_pip_resume_synapse_pools_parameters_sql_pool')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2021-05-07T18:37:00",
+						"timeZone": "Pacific SA Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								5
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pip_resume_synapse_pools')]"
 			]
 		}
 	]
